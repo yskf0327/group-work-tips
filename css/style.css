@@ -1,0 +1,128 @@
+:root {
+  --main-color: #d92b04;
+  --base-color: #f2f2f2;
+  --accent-color: #f28705;
+  --text-color: #1c1817;
+
+  --s-unit: 1rem;
+  --s-3: calc(var(--s-unit) * 0.25);
+  --s-2: calc(var(--s-unit) * 0.5);
+  --s-1: calc(var(--s-unit) * 0.75);
+  --s0: calc(var(--s-unit) * 1.25);
+  --s1: calc(var(--s-unit) * 2);
+  --s2: calc(var(--s-unit) * 3.25);
+  --s3: calc(var(--s-unit) * 5.25);
+
+  --border-radius: 8px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  padding: var(--s0);
+  margin-block: var(--s0);
+  list-style-position: inside;
+  background-color: color-mix(in srgb, var(--accent-color), #ffffff 75%);
+  border-radius: var(--border-radius);
+}
+
+code {
+  background-color: #dddddd;
+  padding: var(--s-3);
+  margin-inline: var(--s-2);
+  border-radius: var(--border-radius);
+}
+
+em {
+  font-style: normal;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+a {
+  color: var(--main-color);
+}
+
+a[href^='http']::after {
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+  content: '\f08e';
+  color: inherit;
+  margin-inline-start: 0.1em;
+}
+
+body {
+  line-height: 1.8;
+  counter-reset: h2;
+  background-color: var(--base-color);
+  color: var(--text-color);
+}
+
+.container {
+  margin-inline: auto;
+  width: min(92%, 45em);
+}
+
+header {
+  padding-block: var(--s0);
+}
+
+main {
+  margin-block-start: var(--s2);
+}
+
+footer {
+  text-align: center;
+  margin-block-start: var(--s2);
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  counter-increment: h2;
+  position: relative;
+  width: fit-content;
+}
+
+h2::before {
+  content: counter(h2) '.';
+}
+
+h2::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  height: 3px;
+  width: 100%;
+  background-color: var(--main-color);
+}
+
+:is(h2, h3) + * {
+  margin-block-start: var(--s0);
+}
+
+section + section {
+  margin-block-start: var(--s3);
+}
+
+section section:nth-of-type(1) {
+  margin-block-start: var(--s1);
+}
+
+section section + section {
+  margin-block-start: var(--s1);
+}
+
+p + p {
+  margin-block-start: var(--s-1);
+}
